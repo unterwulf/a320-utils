@@ -1,0 +1,7 @@
+*.o
+bmf2text
+dlx2text
+hxfpack
+hxfunpack
+text2bmf
+text2dlx

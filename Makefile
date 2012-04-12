@@ -1,31 +1,23 @@
-OBJS = hxfpack hxfunpack bmf2text text2bmf dlx2text text2dlx
+PROGRAMS = hxfpack hxfunpack bmf2text text2bmf dlx2text text2dlx
 CFLAGS = -Wall
 PREFIX = /usr/local
 DESTDIR =
 
-all: $(OBJS)
+all: $(PROGRAMS)
 
-install: $(OBJS)
-	strip $(OBJS)
-	install -t $(DESTDIR)/$(PREFIX)/bin $(OBJS)
+install: $(PROGRAMS)
+	strip $(PROGRAMS)
+	install -t $(DESTDIR)/$(PREFIX)/bin $(PROGRAMS)
 
 clean:
-	$(RM) *.o $(OBJS)
+	$(RM) *.o $(PROGRAMS)
 
-hxfpack: hxf_common.o hxfpack.o xstdio.o xintio.o
-	$(CC) -o $@ $^
-
-hxfunpack: hxf_common.o hxfunpack.o xstdio.o xintio.o
-	$(CC) -o $@ $^
-
+hxfpack: hxfpack.o hxf_common.o xstdio.o xintio.o
+hxfunpack: hxfunpack.o hxf_common.o xstdio.o xintio.o
 dlx2text: dlx2text.o xstdio.o xintio.o
-	$(CC) -o $@ $^
-
 text2dlx: text2dlx.o xstdio.o xintio.o
-	$(CC) -o $@ $^
-
 bmf2text: bmf2text.o xstdio.o xintio.o
-	$(CC) -o $@ $^
-
 text2bmf: text2bmf.o xstdio.o xintio.o
+
+$(PROGRAMS):
 	$(CC) -o $@ $^

@@ -1,7 +1,7 @@
 #ifndef XINTIO_H
 #define XINTIO_H
 
-#include <inttypes.h>
+#include <stdint.h>
 #include <stdio.h>
 
 extern uint16_t xfreadw(FILE *fp);
